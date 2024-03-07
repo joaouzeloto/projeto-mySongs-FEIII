@@ -20,9 +20,11 @@ public class uploadServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         try {
             // lê a pasta de destino
-            String pasta = request.getParameter("destination");
-            Part filePart = request.getPart("file");  // Lê o arquivo de upload
-            String fileName = filePart.getSubmittedFileName();
+            String pasta = "MUSICAS/";
+            String nome = request.getParameter("nameMusic"), autor = request.getParameter("autor"), genero = request.getParameter("genero");
+            Part fileMusic = request.getPart("music");
+            Part fileImage = request.getPart("image");
+            String fileName = nome.replaceAll(" ","")+"_"+genero.replaceAll(" ", "") +"_"+genero.replaceAll(" ","")+".mp3";
 
             OutputStream out = null;
             InputStream filecontent = null;
@@ -31,7 +33,7 @@ public class uploadServlet extends HttpServlet {
             File fpasta = new File(getServletContext().getRealPath("/") + "/" + pasta);
             fpasta.mkdir();
             out = new FileOutputStream(new File(fpasta.getAbsolutePath() + "/" + fileName));
-            filecontent = filePart.getInputStream();
+            filecontent = fileMusic.getInputStream();
             int read = 0;
             byte[] bytes = new byte[1024];
             while ((read = filecontent.read(bytes)) != -1) {
