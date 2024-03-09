@@ -29,7 +29,7 @@
                 </div>
             </form>
             <br>
-            <table style="width: 60%; text-align: center; background-color: white;border-radius: 7px">
+            <table id= "tabela-music"; style="width: 60%; text-align: center; background-color: white;border-radius: 7px">
                 <tr>
                     <th>    </th>
                     <th>Nome</th>
@@ -73,5 +73,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    function pesquisar()
+    {
+        var flag = 0;
+        var tabela = document.getElementById("tabela-music");
+        var pesquisa = document.getElementById("pesquisar");
+        tabela.deleteRow(0);
+        for (var i = 0; i < tabela.rows.length; i++)
+        {
+            var linha = tabela.rows[i];
+            for (var j = 1; j < linha.cells.length-1; j++)
+            {
+                var celula = linha.cells[j].toString();
+                for (var k=0,l=0;k<celula.length;k++)
+                    if(celula[k]==pesquisa[l])
+                    {
+                        l= 1;
+                        for (;k<celula.length&&l<pesquisa.length&&[k]==pesquisa[l];l++)
+                        if (pesquisa.length==l)
+                            flag = 1;
+                    }
+            }
+            if (flag!=1)
+                tabela.deleteRow(i);
+            flag = 0;
+         }
+    }
+</script>
 </body>
 </html>
