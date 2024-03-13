@@ -19,7 +19,7 @@
         <div class="text">
             <h1>Escolha uma <span>música</span></h1>
             <form action="" method="GET">
-                    <label class="form-label" style="color: white; margin:0px;">Explorar</label>
+                <label class="form-label" style="color: white; margin:0px;">Explorar</label>
                 <div>
                     <input placeholder="Pesquise a sua música" type="text" id="pesquisar" name="pesquisa" style="border-radius: 10px; width: 360px; height: 35px; padding-left: 10px;" value="<%= request.getParameter("pesquisa") != null ? request.getParameter("pesquisa") : "" %>">
                     <button type="submit" class="buttonC btn" style="margin-bottom: 20px">PESQUISAR</button>
