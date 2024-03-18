@@ -11,13 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="estilo/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        .banner {
+        background-color: #F5F5F5;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }</style>
 </head>
 <body>
 <div class="background">
     <%@ include file ="cabecalho.html"%>
     <div class="container-text">
         <div class="text">
-            <h1>Escolha uma <span>música</span></h1>
+            <h1>Para adicionar uma música, faça <a href="login.jsp"><span>login.</span></a></h1>
+            <br><br><br>
+            <h2 style="color: white">Escolha uma <span>música</span></h2>
             <form action="" method="GET">
                 <label class="form-label" style="color: white; margin:0px;">Explorar</label>
                 <div>
@@ -56,10 +65,12 @@
                                 boolean exibir = true;
 
                                 if (termoPesquisa != null && !termoPesquisa.isEmpty()) {
-                                    exibir = nome.toLowerCase().contains(termoPesquisa.toLowerCase());
+                                    exibir = nome.toLowerCase().contains(termoPesquisa.toLowerCase()) ||
+                                            estilo.toLowerCase().contains(termoPesquisa.toLowerCase()) ||
+                                            cantor.toLowerCase().contains(termoPesquisa.toLowerCase());
                                 }
 
-                                // Se o arquivo deve ser exibido, adiciona-o à tabela
+
                                 if (exibir) {
                 %>
                 <tr style='width: 100%;' onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='transparent';">
